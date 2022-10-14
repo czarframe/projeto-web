@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -19,12 +20,7 @@ class HomeController extends Controller
     }
 
     public function users() {
-        $users = [
-            ['nome' => 'José da Silva', 'idade'  => 64, 'cidade' => 'Maringá'],
-            ['nome' => 'Maria Joana', 'idade' => 26, 'cidade' => 'Londrina'],
-            ['nome' => 'Ana Carolina', 'idade' => 35, 'cidade' => 'Curitiba'],
-            ['nome' => 'Ana Carolina', 'idade' => 35, 'cidade' => 'Curitiba']
-        ];
+        $users = DB::table('usuarios')->get();
 
         return view('users', [
             'usuarios' => $users
